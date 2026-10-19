@@ -232,6 +232,7 @@ html{--map:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFB
 </section>
 
 <script>
+const $=id=>document.getElementById(id);
 // ✏️ PERSONALIZA AQUÍ
 const QUIZ = [
   {q:"Como sabes, este año hemos tenido muchas bodas… pero, ¿cuántas son realmente?", o:["5","6","7","8"], ok:1},
@@ -256,7 +257,7 @@ function go(n){
   if(n===1)build(1);if(n===2)build(2);if(n==='R')fillAns();const A=!['E','H','A','0b'].includes(n);$('advBg').classList.toggle('on',A);document.body.classList.toggle('adv',A);
   if(n===3||n===4) confetti();
 }
-let lives=3,locked=false;const respuestas=["","",""];function fillAns(){[0,1,2].forEach(k=>{$("a"+(k+1)).textContent=respuestas[k]||"—"});}const last=[null,null],$=id=>document.getElementById(id);
+let lives=3,locked=false;const respuestas=["","",""];function fillAns(){[0,1,2].forEach(k=>{$("a"+(k+1)).textContent=respuestas[k]||"—"});}const last=[null,null];
 function shuffle(n,prev,ban){let a;do{a=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}}while((prev&&n>1&&a.join()===prev.join())||(ban&&Object.keys(ban).some(k=>a[ban[k]]==k)));return a;}
 function hearts(pop){document.querySelectorAll('.hearts').forEach(h=>h.innerHTML=[0,1,2].map(k=>`<span class="${pop&&k===lives?'pop':''}">${k<lives?'❤️':'💔'}</span>`).join(''));}
 function build(i){
